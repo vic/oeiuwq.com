@@ -1,0 +1,34 @@
+/* BIOS power-on test, boot manager and CMOS setup, in base16 slots. */
+body.hub{font:18px/1.45 var(--code);background:var(--base00)}
+.crt{min-height:100vh;position:relative;padding:4vh 5vw}
+.crt::after{content:"";position:fixed;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,transparent 0 2px,rgb(0 0 0/.18) 2px 3px);
+  box-shadow:inset 0 0 18vmin rgb(0 0 0/.55)}
+.post pre{margin:0;font:inherit;color:var(--base05);min-height:60vh}
+.post pre::after{content:"█";color:var(--base0B);animation:blink 1s steps(1) infinite}
+.hint{color:var(--base03)}
+.hint button{background:var(--base02);border:0;color:var(--base0A);padding:0 .4em;cursor:pointer}
+@keyframes blink{50%{opacity:0}}
+.menu h1,.setup h1{font:700 1.2em var(--head);color:var(--base0A);margin:0 0 1em;letter-spacing:.05em}
+.boot{list-style:none;margin:0;padding:.6em 0;border:3px double var(--base03);max-width:62em}
+.boot li a{display:grid;grid-template-columns:11ch 1fr;gap:2ch;padding:.15em 1.2em;color:var(--base05);text-decoration:none;font-family:var(--code)}
+.boot li .name{color:var(--base0D);font-weight:700}
+.boot li.sel a{background:var(--base01);color:var(--base06)}
+.boot li.sel .name{color:var(--base0B)}
+.menu footer{margin-top:3em;display:flex;flex-wrap:wrap;gap:1.5em}
+.menu footer a{color:var(--base0E)}
+.setup{background:var(--base02);margin:-4vh -5vw;min-height:100vh;padding:4vh 5vw;color:var(--base06)}
+.setup .panes{display:grid;grid-template-columns:minmax(0,1fr) 22em;gap:2em;border:3px double var(--base05);padding:1em}
+.setup input{width:100%;background:var(--base00);border:1px solid var(--base03);padding:.3em .5em}
+.setup ul{list-style:none;margin:.5em 0 0;padding:0;max-height:60vh;overflow:auto}
+.setup li{cursor:pointer;padding:0 .5em}
+.setup li.saved::before{content:"* ";color:var(--base0B)}
+.setup li.sel{background:var(--base0A);color:var(--base00)}
+.setup .swatch{display:grid;grid-template-columns:repeat(8,1fr);height:3em;margin:1em 0;border:1px solid var(--base05)}
+.setup .help button{background:var(--base00);border:1px solid var(--base05);margin-right:.5em;padding:.2em 1em;cursor:pointer}
+@media (max-width:700px){body.hub{font-size:14px}.setup .panes{grid-template-columns:1fr}.boot li a{grid-template-columns:1fr;gap:0}}
+.try{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(24em,1fr));gap:.3em 2em;max-width:62em}
+.try li::before{content:"► ";color:var(--base0A)}
+.try a,.try button{color:var(--base0B);background:none;border:0;padding:0;cursor:pointer;font:inherit;font-family:var(--code);text-align:left}
+.menu h1+ul.try{margin-bottom:1em}
+.menu h1:not(:first-child){margin-top:1.5em}

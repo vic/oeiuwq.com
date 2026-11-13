@@ -1,0 +1,43 @@
+/* An 8-bit console under a curved TV. Pixels stay sharp. */
+body.nes{background:var(--base00) radial-gradient(ellipse at top,var(--base01),var(--base00) 70%);font:14px/1.5 var(--code);color:var(--base05);min-height:100vh}
+.nes{width:min(760px,96vw);margin:2vh auto;display:flex;flex-direction:column;gap:14px}
+.tv{background:var(--base02);padding:26px;border-radius:26px;box-shadow:inset 0 0 0 4px var(--base03),0 10px 0 var(--base00)}
+.screen{position:relative;aspect-ratio:256/240;background:#000;background:color-mix(in srgb,var(--base00) 35%,#000);border-radius:18px/14px;overflow:hidden;
+  display:grid;place-items:center;box-shadow:inset 0 0 40px #000}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(transparent 0 2px,rgb(0 0 0/.25) 2px 3px)}
+.field{width:100%;height:100%;shape-rendering:crispEdges;image-rendering:pixelated}
+.field .wall{fill:var(--base01)}.field .edge{fill:var(--base0E)}.field .ledge{fill:var(--base0C)}
+.field .tower{fill:var(--base02);opacity:.7}
+.field .gate{fill:var(--base0B);filter:drop-shadow(0 0 3px var(--base0B))}
+.field .cell{fill:var(--base0A)}
+.field .lash{fill:var(--base0F);filter:drop-shadow(0 0 2px var(--base0F))}
+.field .check{font-size:12px;fill:var(--base0D)}
+.field .hud{font:8px var(--code);fill:var(--base06)}
+.card{padding:8%;text-align:center;font:clamp(11px,2.4vw,17px)/1.6 var(--code);color:var(--base06)}
+.card h1{font:italic 800 clamp(28px,7vw,54px) var(--head);margin:0;color:var(--base0F);text-shadow:3px 3px 0 var(--base01),0 0 18px var(--base0F)}
+.card h2{color:var(--base0B);font:700 1.3em var(--code)}
+.card .sub{color:var(--base0C);letter-spacing:.2em}.card .small{color:var(--base03);font-size:.75em}
+.story p{text-align:left}
+.blink{animation:blink 1s steps(1) infinite;color:var(--base0A)}
+@keyframes blink{50%{opacity:0}}
+.buttons{display:flex;gap:1.5ch;justify-content:center;flex-wrap:wrap}
+.buttons a,.buttons button{background:var(--base0F);color:var(--base00);border:0;padding:.3em 1.2ch;font:700 1em var(--code);text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--base01)}
+.console{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 26px;background:var(--base05);color:var(--base00);border-radius:10px;
+  box-shadow:inset 0 -6px 0 var(--base04)}
+.pad,.ab{display:flex;gap:10px}
+.key{width:58px;height:58px;border:0;border-radius:8px;background:var(--base00);color:var(--base05);font:700 20px var(--code);cursor:pointer;touch-action:none;user-select:none}
+.key-a,.key-b{border-radius:50%;background:var(--base08);color:var(--base00)}
+.key:active{transform:translateY(2px)}
+.mid{display:flex;gap:10px}
+.pill{background:var(--base03);color:var(--base05);border:0;border-radius:12px;padding:4px 14px;font:700 11px var(--code);letter-spacing:.1em;text-decoration:none;cursor:pointer}
+.help{text-align:center;color:var(--base04);margin:0}
+.shelf-title{margin:18px 0 0;font:700 13px var(--code);letter-spacing:.3em;color:var(--base0C);text-align:center}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}
+.cart{position:relative;display:block;height:150px;padding:10px 10px 0;background:var(--base03);border-radius:6px 6px 2px 2px;text-decoration:none;color:var(--base00);
+  box-shadow:inset 0 -18px 0 var(--base02),0 6px 0 var(--base00);transition:transform .15s}
+.cart::before{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:6px;background:repeating-linear-gradient(90deg,var(--base0A) 0 4px,transparent 4px 7px)}
+.cart:hover{transform:translateY(-6px)}
+.cart-label{display:flex;flex-direction:column;gap:3px;height:105px;padding:8px;background:linear-gradient(160deg,var(--base0F),var(--base0E));border-radius:3px;overflow:hidden}
+.cart-glyph{font-size:22px;color:var(--base06);text-shadow:2px 2px 0 var(--base01)}
+.cart-label strong{font:800 12px var(--code);color:var(--base00)}
+.cart-label small{font:10px/1.25 var(--text);color:var(--base00)}

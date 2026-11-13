@@ -1,0 +1,57 @@
+/* Borland Turbo Vision IDE: gray menu and status bars with red hot keys, a
+   dotted desktop, double-line windows with drop shadows and scroll bars. */
+body.projects{font:16px/1.3 var(--code);background:var(--base01);overflow:hidden}
+.tv{position:fixed;inset:0;display:grid;grid-template-rows:auto 1fr auto;
+  --win:var(--base01);--frame:var(--base06);--text:var(--base06);--gray:var(--base05);--ink:var(--base00);--hot:var(--base08);--sel:var(--base0C);--shadow:rgb(0 0 0/.75)}
+.hot{color:var(--hot)}
+.tv-menu,.tv-status{display:flex;align-items:center;background:var(--gray);color:var(--ink);padding:0 1ch;white-space:nowrap}
+.tv-sys{padding:0 1ch}
+.tv-m{position:relative}
+.tv-mt,.tv-status button{background:none;border:0;font:inherit;color:inherit;padding:0 1ch;cursor:pointer}
+.tv-mt.on{background:var(--base0D);color:var(--ink)}
+.tv-drop{position:absolute;top:100%;left:0;z-index:20;min-width:30ch;background:var(--gray);padding:.3em 0;
+  border:2px solid var(--ink);outline:1ch solid var(--gray);box-shadow:2ch 1.4em 0 var(--shadow)}
+.tv-item{text-decoration:none;box-sizing:border-box;display:flex;justify-content:space-between;gap:3ch;width:100%;background:none;border:0;padding:0 1ch;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.tv-item:hover{background:var(--base0D)}
+.tv-k{color:var(--base03)}
+.tv-desk{position:relative;min-height:0;background:var(--base02) repeating-linear-gradient(45deg,transparent 0 2px,var(--base01) 2px 4px);
+  display:grid;grid-template-columns:30ch minmax(0,1fr);grid-template-rows:minmax(0,1fr) 7em;gap:1.4em 3ch;padding:1em 3ch 1.6em 1ch}
+.tv-win{position:relative;display:flex;flex-direction:column;min-height:0;background:var(--win);color:var(--text);
+  border:3px double var(--frame);box-shadow:2ch 1.2em 0 var(--shadow)}
+.tv-frame{position:absolute;top:-.75em;left:1ch;right:1ch;display:flex;justify-content:space-between;line-height:1.3;pointer-events:none}
+.tv-frame span{background:var(--win);color:var(--frame)}
+.tv-close{color:var(--base0D)!important}
+.tv-wtitle{font-weight:700}
+.tv-in{flex:1;min-height:0;display:flex;flex-direction:column;padding:.6em 1ch .2em}
+.tv-project{grid-row:1/3}
+.tv-message{grid-column:2;--win:var(--base0C);--text:var(--ink);--frame:var(--ink)}
+.tv-message p{margin:0}.tv-message a{color:var(--ink)}.tv-message .ok{color:var(--base01);font-weight:700}
+.tv-cols,.tv-list li{display:grid;grid-template-columns:1fr 6ch 5ch;gap:1ch}
+.tv-cols{color:var(--base0A);border-bottom:1px solid var(--base03)}
+.tv-list{list-style:none;margin:0;padding:0;overflow:auto;flex:1;scrollbar-color:var(--base0C) var(--base02)}
+.tv-list li{cursor:pointer;padding:0 .5ch}
+.tv-list li.open{color:var(--base0A)}
+.tv-list li.sel{background:var(--sel);color:var(--ink)}
+.tv-edit{flex:1;min-height:0;display:flex}
+.tv-text{flex:1;overflow:auto;scrollbar-width:none}
+.tv-text::-webkit-scrollbar{display:none}
+.tv-text .readme{font:inherit}.tv-text .readme pre{background:var(--base00);color:var(--base0B)}
+.tv-text .readme h1,.tv-text .readme h2,.tv-text .readme h3{font:700 1em var(--code);color:var(--base0A)}.tv-text .readme a{color:var(--base0C)}
+.tv-sb{display:flex;flex-direction:column;width:2ch;margin-right:-1ch;background:var(--base02)}
+.tv-sb button{background:var(--base0C);border:0;color:var(--ink);font:inherit;padding:0;cursor:pointer}
+.tv-track{flex:1;position:relative;background:repeating-linear-gradient(0deg,var(--base02) 0 2px,var(--base03) 2px 4px)}
+.tv-thumb{position:absolute;left:0;right:0;transform:translateY(-50%);text-align:center;color:var(--base0C);background:var(--base01)}
+.tv-modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center}
+.tv-dialog{width:min(70ch,92vw);max-height:80vh;--win:var(--gray);--text:var(--ink);--frame:var(--base06)}
+.tv-dialog .tv-in{gap:.3em;padding:1em 2ch}
+.tv-dialog input{background:var(--base01);color:var(--base06);border:0;font:inherit;padding:0 1ch}
+.tv-files{max-height:14em;background:var(--base0C);color:var(--ink)}
+.tv-files li{grid-template-columns:14ch 1fr;overflow:hidden;white-space:nowrap}
+.tv-files li.sel{background:var(--base01);color:var(--base06)}
+.tv-buttons{display:flex;gap:2ch;justify-content:center;margin-top:.6em}
+.tv-btn{background:var(--base0D);color:var(--ink);border:0;font:inherit;padding:0 2ch;cursor:pointer;text-decoration:none;box-shadow:1ch .5em 0 var(--shadow)}
+.tv-btn:active{transform:translate(1ch,.5em);box-shadow:none}
+.tv-about{text-align:center}.tv-about .big{font:700 1.6em var(--head);color:var(--base01)}
+.tv-status{gap:1ch}
+@media (max-width:800px){body.projects{font-size:13px}.tv-desk{grid-template-columns:1fr;grid-template-rows:12em minmax(0,1fr) 7em}.tv-project{grid-row:auto}.tv-message{grid-column:auto}}
+.tv-dialog form{display:flex}.tv-dialog form input{flex:1}

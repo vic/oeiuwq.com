@@ -1,0 +1,55 @@
+name: Site
+on:
+  # Nightly fresh data (05:17 UTC). GitHub runs schedules only from the
+  # default branch, so this file must also be on main for the nightly run.
+  schedule: [{ cron: "17 5 * * *" }]
+  workflow_dispatch:
+  push: { branches: ["site"] }
+permissions:
+  contents: read
+concurrency: { group: site, cancel-in-progress: false }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: site }
+      - uses: cachix/install-nix-action@v31
+      # The README file of the last run makes the fetch incremental.
+      - uses: actions/cache@v4
+        with:
+          path: data/readmes.gz
+          key: readmes-${{ github.run_id }}
+          restore-keys: readmes-
+      - name: Fetch public GitHub data
+        if: github.event_name != 'push'
+        env:
+          # SITE_TOKEN (read:user) also reads the public sponsors; GITHUB_TOKEN reads the rest.
+          GITHUB_TOKEN: ${{ secrets.SITE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: nix develop --command just fetch
+      - name: Lint and test
+        run: nix develop --command sh -c 'just lint && just test'
+      - name: Build
+        run: nix develop --command just build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oeiuwq-linux-amd64
+          path: bin/oeiuwq
+          retention-days: 14
+      # Runs only when the deploy secrets exist: DEPLOY_HOST (user@host),
+      # DEPLOY_SSH_KEY, DEPLOY_PATH (the binary on the server) and
+      # DEPLOY_RESTART (a command that restarts it).
+      - name: Deploy
+        if: env.DEPLOY_HOST != ''
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_RESTART: ${{ secrets.DEPLOY_RESTART }}
+        run: |
+          install -m 600 /dev/null ~/deploy_key
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/deploy_key
+          ssh="ssh -i $HOME/deploy_key -o StrictHostKeyChecking=accept-new"
+          scp -i ~/deploy_key -o StrictHostKeyChecking=accept-new bin/oeiuwq "$DEPLOY_HOST:$DEPLOY_PATH.new"
+          $ssh "$DEPLOY_HOST" "chmod 755 '$DEPLOY_PATH.new' && mv -f '$DEPLOY_PATH.new' '$DEPLOY_PATH' && $DEPLOY_RESTART"

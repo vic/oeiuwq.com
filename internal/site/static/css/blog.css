@@ -1,0 +1,32 @@
+/* ANSI BBS: one 80-column screen, box drawing in Pragmasevka. */
+body.blog{background:#000;background:color-mix(in srgb,var(--base00) 55%,#000);font:16px/1.35 var(--code);color:var(--base05)}
+.bbs{width:min(82ch,100vw);margin:3vh auto;padding:1ch;background:var(--base00);border:1px solid var(--base01);
+  box-shadow:0 0 40px color-mix(in srgb,var(--base01) 60%,transparent)}
+.banner{margin:0;color:var(--base0E);font:inherit;overflow:hidden}
+.banner{text-shadow:0 0 6px color-mix(in srgb,var(--base0E) 60%,transparent)}
+.bbs h1{font:700 1em var(--code);color:var(--base0A);margin:1.2em 0 .4em;text-transform:uppercase}
+.bbs h1::before{content:"── "}.bbs h1::after{content:" ──────────────"}
+.list,.doors{list-style:none;margin:0;padding:0}
+.list button{display:grid;grid-template-columns:6ch 12ch 1fr;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--base05)}
+.list button:hover,.list button:focus{background:var(--base01);color:var(--base06)}
+.n{color:var(--base0B);font-weight:700}
+.d{color:var(--base0D)}
+.doors a{color:var(--base05);text-decoration:none;font-family:var(--code)}
+.doors a:hover{background:var(--base01)}
+.dim{color:var(--base03)}
+.prompt{margin-top:1.5em;color:var(--base0A)}
+.prompt button{background:none;border:0;color:var(--base0B);cursor:pointer;font:inherit;padding:0}
+.cursor{animation:blink 1s steps(1) infinite;color:var(--base0B)}
+@keyframes blink{50%{opacity:0}}
+.hdr{border:1px solid var(--base03);padding:.4em 1ch;margin-top:1em}
+.k{color:var(--base0D)}
+.msg .body{margin-top:1em;white-space:normal}
+.msg .body h1,.msg .body h2,.msg .body h3{font:700 1em var(--code);color:var(--base0A)}
+.msg .body a{color:var(--base0B)}
+.msg .body code,.msg .body pre{color:var(--base0C)}
+.bbs footer{margin-top:1.5em;border-top:1px solid var(--base02);padding-top:.4em;color:var(--base03);font-size:.85em}
+@media (max-width:700px){body.blog{font-size:12px}}
+.bulletins{list-style:none;margin:0;padding:0}
+.bulletins li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bulletins a,.callers a{color:var(--base0B);font-family:var(--code)}
+.callers{display:flex;flex-wrap:wrap;gap:0 1.5ch;margin:0}

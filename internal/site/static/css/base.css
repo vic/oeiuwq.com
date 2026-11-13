@@ -1,0 +1,46 @@
+/* Fonts of yen.oeiuwq.com and denful.dev, all OFL-1.1. */
+@font-face{font-family:"Victor Mono";src:url(/static/fonts/victor-mono.woff2) format("woff2");font-weight:100 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Victor Mono";src:url(/static/fonts/victor-mono-italic.woff2) format("woff2");font-weight:100 700;font-style:italic;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(/static/fonts/jetbrains-mono.woff2) format("woff2");font-weight:100 800;font-style:normal;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(/static/fonts/jetbrains-mono-italic.woff2) format("woff2");font-weight:100 800;font-style:italic;font-display:swap}
+@font-face{font-family:Pragmasevka;src:url(/static/fonts/pragmasevka-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Pragmasevka;src:url(/static/fonts/pragmasevka-bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:Pragmasevka;src:url(/static/fonts/pragmasevka-italic.woff2) format("woff2");font-style:italic;font-display:swap}
+@font-face{font-family:Agave;src:url(/static/fonts/agave-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Agave;src:url(/static/fonts/agave-bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --head:"Victor Mono",monospace;
+  --text:"JetBrains Mono",monospace;
+  --code:Pragmasevka,monospace;
+  --link:Agave,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--base00);color:var(--base05);font:15px/1.5 var(--text)}
+a{color:var(--base0B);font-family:var(--link)}
+h1,h2,h3,h4,strong,th{font-family:var(--head)}
+pre,code{font-family:var(--code)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--base0A);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* A rendered README; each look sets its colors through these slots. */
+.readme{line-height:1.55;overflow-wrap:anywhere}
+.readme h1,.readme h2,.readme h3{line-height:1.2;margin:1em 0 .4em}
+.readme img{max-width:100%;height:auto}
+.readme pre{overflow:auto;padding:.6em 1ch;background:var(--base01)}
+.readme code{font-family:var(--code)}
+.readme table{border-collapse:collapse}.readme td,.readme th{border:1px solid var(--base03);padding:2px 6px}
+.readme blockquote{margin:0;padding-left:1.5ch;border-left:3px solid var(--base0E)}
+/* The game editor panel, the same on every game page. */
+.editor{position:fixed;inset:4vh 4vw;z-index:50;display:flex;flex-direction:column;gap:6px;padding:10px;background:var(--base00);color:var(--base05);
+  border:2px solid var(--base0D);box-shadow:0 0 0 100vmax rgb(0 0 0/.55);font:13px/1.45 var(--code);text-transform:none}
+.editor header{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.editor header strong{flex:1;color:var(--base0B)}
+.editor button{background:var(--base02);color:var(--base06);border:1px solid var(--base03);padding:2px 10px;font:inherit;cursor:pointer}
+.editor button:first-of-type{background:var(--base0B);color:var(--base00)}
+.editor-help{margin:0;color:var(--base04)}
+.editor textarea{flex:1;resize:none;background:var(--base01);color:var(--base06);border:0;padding:8px;font:13px/1.4 var(--code);white-space:pre;overflow:auto;tab-size:4}
+.editor-error{margin:0;color:var(--base08)}
+.edit-btn{position:fixed;right:12px;bottom:12px;z-index:40;background:var(--base0B);color:var(--base00);border:0;padding:4px 12px;font:700 13px var(--code);cursor:pointer;box-shadow:3px 3px 0 var(--base01)}

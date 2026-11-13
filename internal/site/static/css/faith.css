@@ -1,0 +1,30 @@
+/* HyperCard: a 512x342 card, 1-bit look in two base16 slots, dither outside. */
+body.faith{font:16px/1.5 var(--text);color:var(--base00);
+  background:var(--base05) repeating-conic-gradient(var(--base00) 0 25%,transparent 0 50%) 0 0/4px 4px}
+.hc-menu{display:flex;gap:1.6em;padding:2px 12px;background:var(--base05);border-bottom:2px solid var(--base00);font:700 14px var(--head)}
+.hc-menu a{color:var(--base00);text-decoration:none;font-family:var(--head)}
+.hc-apple{color:var(--base01)}
+.hc-window{width:min(784px,96vw);margin:6vh auto;background:var(--base05);border:2px solid var(--base00);box-shadow:4px 4px 0 var(--base00)}
+.hc-title{height:22px;display:flex;align-items:center;justify-content:center;border-bottom:2px solid var(--base00);
+  background:repeating-linear-gradient(to bottom,var(--base00) 0 1px,var(--base05) 1px 3px)}
+.hc-title h2{margin:0;padding:0 12px;background:var(--base05);font:700 14px var(--head)}
+.hc-card{aspect-ratio:512/342;position:relative;padding:5% 7%;display:flex;flex-direction:column;overflow:auto}
+.hc-card h1{font:700 italic clamp(22px,4.4vw,38px)/1.1 var(--head);margin:0 0 .5em;color:var(--base00);border-bottom:3px double var(--base00);padding-bottom:.2em}
+.hc-card.first h1{font-size:clamp(40px,9vw,84px);text-align:center;border:0;margin-top:auto}
+.hc-card.first .hc-field{text-align:center;margin-bottom:auto}
+.hc-field{font-size:clamp(15px,2.2vw,20px);flex:1}
+.hc-field p{margin:.4em 0}
+.hc-field em{font-family:var(--head)}
+.hc-field a{color:var(--base01)}
+.hc-nav{display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-top:10px}
+.hc-nav button,.hc-home{min-width:44px;height:30px;border:2px solid var(--base00);border-radius:10px;background:var(--base05);
+  box-shadow:2px 2px 0 var(--base00);font:700 16px var(--text);color:var(--base00);cursor:pointer;display:grid;place-items:center;text-decoration:none}
+.hc-nav button:active,.hc-home:active{background:var(--base00);color:var(--base05)}
+.hc-count{margin-right:auto;font:13px var(--code)}
+.hc-menubtn{background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:0}
+.hc-stacks{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:14px 10px;align-content:start}
+.hc-stack{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--base00);text-decoration:none;font:13px var(--text);text-align:center}
+.hc-stackicon{width:54px;height:44px;display:grid;place-items:center;font:700 22px var(--code);color:var(--base00);background:var(--base05);
+  border:2px solid var(--base00);border-radius:4px;box-shadow:3px 3px 0 var(--base00),6px 6px 0 var(--base05),6px 6px 0 2px var(--base00)}
+.hc-stack:hover .hc-stackicon{background:var(--base00);color:var(--base05)}
+.hc-stack:hover span:last-child{background:var(--base00);color:var(--base05)}
